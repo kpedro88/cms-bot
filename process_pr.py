@@ -28,7 +28,7 @@ from cms_static import BACKPORT_STR, GH_CMSSW_ORGANIZATION, CMSBOT_NO_NOTIFY_MSG
 from githublabels import TYPE_COMMANDS, TEST_IGNORE_REASON
 from repo_config import GH_REPO_ORGANIZATION
 import re, time
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 import zlib, base64
 from datetime import datetime
 from os.path import join, exists, dirname
@@ -2189,7 +2189,6 @@ def process_pr(repo_config, gh, repo, issue, dryRun, cmsbuild_user=None, force=F
             for signature in new_assign_cats
             if signature in l2_categories
         ]
-        from collections import OrderedDict
         new_l2s = list(OrderedDict.fromkeys(new_l2s))
         if not dryRun:
             issue.create_comment(
