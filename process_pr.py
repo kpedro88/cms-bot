@@ -2189,6 +2189,8 @@ def process_pr(repo_config, gh, repo, issue, dryRun, cmsbuild_user=None, force=F
             for signature in new_assign_cats
             if signature in l2_categories
         ]
+        from collections import OrderedDict
+        new_l2s = list(OrderedDict.fromkeys(new_l2s))
         if not dryRun:
             issue.create_comment(
                 "New categories assigned: "
